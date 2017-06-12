@@ -22,6 +22,8 @@ const darwinKeys = join(keymapPath, 'darwin.json');
 const win32Keys = join(keymapPath, 'win32.json');
 const linuxKeys = join(keymapPath, 'linux.json');
 
+console.log('keymaps: ',darwinKeys);
+
 const defaultPlatformKeyPath = () => {
   switch (process.platform) {
     case 'darwin': return darwinKeys;
