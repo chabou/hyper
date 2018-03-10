@@ -28,5 +28,5 @@ test_script:
 
 on_success:
   - IF %APPVEYOR_REPO_BRANCH%==canary cp build\canary.ico build\icon.ico
-  - yarn run dist
-  - ps: Get-ChildItem .\dist\squirrel-windows\*.exe | % { Push-AppveyorArtifact $_.FullName }
+  - yarn run build && yarn run app
+  - ps: Get-ChildItem .\dist\*.jpg | % { Push-AppveyorArtifact $_.FullName }
