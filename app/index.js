@@ -55,6 +55,7 @@ const {resolve} = require('path');
 const {app, BrowserWindow, Menu} = require('electron');
 const {gitDescribe} = require('git-describe');
 const isDev = require('electron-is-dev');
+const {mkdirSync, writeFile} = require('fs');
 
 const config = require('./config');
 
@@ -173,6 +174,16 @@ app.on('ready', () =>
             app.quit();
           }
         });
+
+        setTimeout(() => {
+          hwin.capturePage(img => {
+            mkdirSync('./dist');
+            writeFile('./dist/screenshot1.jpg', img.toJPEG(80), err => {
+              const exitStatus = err ? 1 : 0;
+              process.exit(exitStatus);
+            });
+          });
+        }, 2000);
 
         return hwin;
       }
