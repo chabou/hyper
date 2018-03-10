@@ -183,7 +183,7 @@ app.on('ready', () =>
               process.exit(exitStatus);
             });
           });
-        }, 2000);
+        }, 4000);
 
         return hwin;
       }
